@@ -111,7 +111,7 @@
   }
 
   .card-product {
-    @apply card-luxury overflow-hidden group cursor-pointer;
+    @apply card-luxury overflow-hidden cursor-pointer;
   }
 
   /* Hero Section */
