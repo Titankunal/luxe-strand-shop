@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, Search, ShoppingCart, User, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,31 +6,45 @@ import { Input } from "@/components/ui/input";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
     "Home",
-    "Remy Hair",
-    "Virgin Hair", 
     "Collections",
     "Care Guide",
     "About Us",
     "Contact"
   ];
 
+  // Watch scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/50 shadow-card">
-      <div className="container mx-auto px-6">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? "bg-background/40 backdrop-blur-lg border-b border-border/50 shadow-card"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="w-full">
         {/* Top Bar */}
-        <div className="flex items-center justify-between py-4">
-          {/* Logo */}
-          <div className="flex items-center">
-            <h1 className="text-2xl font-serif font-bold text-gradient">
-              Luxe Strand
+        <div className="flex items-center justify-between py-2 px-4 sm:px-6">
+          {/* Left: Logo pinned */}
+          <div className="flex-shrink-0">
+            <h1 className="text-xl font-serif font-bold text-gradient">
+              Ormee Hairs
             </h1>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          {/* Center: Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-6">
             {navItems.map((item) => (
               <a
                 key={item}
@@ -42,15 +56,15 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Actions */}
-          <div className="flex items-center space-x-4">
+          {/* Right: Actions pinned */}
+          <div className="flex items-center space-x-3">
             {/* Search */}
             <div className="relative">
               {isSearchOpen ? (
                 <div className="flex items-center space-x-2">
                   <Input
                     placeholder="Search products..."
-                    className="w-64 bg-secondary/50 border-primary/30"
+                    className="w-48 bg-secondary/50 border-primary/30 text-sm"
                     autoFocus
                   />
                   <Button
@@ -67,6 +81,7 @@ const Header = () => {
                   size="icon"
                   onClick={() => setIsSearchOpen(true)}
                   className="hover:bg-secondary"
+                  aria-label="Search"
                 >
                   <Search className="h-5 w-5" />
                 </Button>
@@ -74,7 +89,12 @@ const Header = () => {
             </div>
 
             {/* Cart */}
-            <Button variant="ghost" size="icon" className="relative hover:bg-secondary">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative hover:bg-secondary"
+              aria-label="Cart"
+            >
               <ShoppingCart className="h-5 w-5" />
               <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 2
@@ -82,7 +102,12 @@ const Header = () => {
             </Button>
 
             {/* User Account */}
-            <Button variant="ghost" size="icon" className="hover:bg-secondary">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hover:bg-secondary"
+              aria-label="Account"
+            >
               <User className="h-5 w-5" />
             </Button>
 
@@ -92,6 +117,7 @@ const Header = () => {
               size="icon"
               className="lg:hidden hover:bg-secondary"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Menu"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -100,13 +126,13 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden border-t border-border/50 py-4 animate-fade-in-up">
-            <nav className="flex flex-col space-y-4">
+          <div className="lg:hidden border-t border-border/50 py-3 px-4 sm:px-6 bg-background/70 backdrop-blur-md">
+            <nav className="flex flex-col space-y-3">
               {navItems.map((item) => (
                 <a
                   key={item}
                   href="#"
-                  className="text-foreground hover:text-primary transition-colors duration-300 font-medium py-2"
+                  className="text-foreground hover:text-primary transition-colors duration-300 font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
