@@ -45,7 +45,7 @@ const Footer = () => {
         <div className="container mx-auto px-6 py-16">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-3xl font-serif font-bold mb-4">
-              Stay Beautiful with <span className="text-primary-glow">Luxe Strand</span>
+              Stay Beautiful with <span className="text-primary-glow">Ormee Hairs</span>
             </h3>
             <p className="text-xl opacity-90 mb-8">
               Get exclusive access to new collections, styling tips, and special offers
@@ -70,7 +70,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <h2 className="text-3xl font-serif font-bold text-primary-glow mb-4">
-              Luxe Strand
+              Ormee Hairs
             </h2>
             <p className="opacity-90 leading-relaxed mb-6">
               Premium hair extensions crafted with heritage techniques. 
@@ -81,15 +81,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Phone className="h-4 w-4 text-primary-glow mr-3" />
-                <span className="text-sm">+1 (555) 123-4567</span>
+                <span className="text-sm">+91 8962648358</span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-4 w-4 text-primary-glow mr-3" />
-                <span className="text-sm">hello@luxestrand.com</span>
+                <span className="text-sm">hello@emiliobeaufort.com</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 text-primary-glow mr-3" />
-                <span className="text-sm">123 Beauty Ave, NYC 10001</span>
+                <span className="text-sm">Vrushabari Towers, Whitefied, Bengluru</span>
               </div>
             </div>
           </div>
@@ -124,7 +124,7 @@ const Footer = () => {
           ].map(({ icon: Icon, label }) => (
             <a
               key={label}
-              href="#"
+              href=""
               className="w-12 h-12 bg-background/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-colors duration-300 group"
               aria-label={label}
             >
@@ -135,7 +135,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between mt-8 pt-8 border-t border-primary/20 text-sm opacity-60">
-          <p>&copy; 2024 Luxe Strand. All rights reserved.</p>
+          <p>&copy; 2025 Ormee Hairs. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:opacity-100 transition-opacity duration-300">Privacy Policy</a>
             <a href="#" className="hover:opacity-100 transition-opacity duration-300">Terms of Service</a>

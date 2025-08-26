@@ -8,15 +8,8 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navItems = [
-    "Home",
-    "Collections",
-    "Care Guide",
-    "About Us",
-    "Contact"
-  ];
+  const navItems = ["Home", "Collections", "Care Guide", "About Us", "Contact"];
 
-  // Watch scroll position
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -34,16 +27,21 @@ const Header = () => {
       }`}
     >
       <div className="w-full">
-        {/* Top Bar */}
-        <div className="flex items-center justify-between py-2 px-4 sm:px-6">
-          {/* Left: Logo pinned */}
-          <div className="flex-shrink-0">
-            <h1 className="text-xl font-serif font-bold text-gradient">
+        <div className="flex items-center justify-between py-2 px-4 sm:px-6 relative">
+          {/* Center: Logo */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <h1
+              className={`font-serif text-gradient transition-all duration-1000 ${
+                isScrolled
+                  ? "text-3xl font-extrabold"
+                  : "text-xl font-bold"
+              }`}
+            >
               Ormee Hairs
             </h1>
           </div>
 
-          {/* Center: Desktop Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6">
             {navItems.map((item) => (
               <a
@@ -56,8 +54,8 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Right: Actions pinned */}
-          <div className="flex items-center space-x-3">
+          {/* Right: Actions */}
+          <div className="flex items-center space-x-3 ml-auto">
             {/* Search */}
             <div className="relative">
               {isSearchOpen ? (
